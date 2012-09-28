@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Question:</b>
+  <%= @gquery.question %>
+</p>
+
+<p>
+  <b>Interval:</b>
+  <%= @gquery.interval %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @gquery.user_id %>
+</p>
+
+<h3>Search results</h3>
+<%  @gquery.gresults.each do |r| %>
+    <p> <%= r.position %>.<a href="<%= r.url %>"><%=  r.title %></a></p>
+<% end %>
+
+<%= link_to 'Edit', edit_gquery_path(@gquery) %> |
+<%= link_to 'Back', gqueries_path %>

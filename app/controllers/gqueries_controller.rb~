@@ -1,0 +1,63 @@
+class GqueriesController < ApplicationController
+  before_filter :param, :only => [:edit, :show, :destroy, :update]
+
+  def param
+    @gquery = Gquery.find(params[:id])
+  end
+
+  def index
+    @gqueries = Gquery.all
+  end
+
+  def new
+    @gquery = Gquery.new
+  end
+
+  def create
+    @gquery = Gquery.new(params[:gquery])
+
+    if @gquery.save
+      agent = Mechanize.new
+      agent.get("https://www.google.pl/")
+      agent.page.forms[0].q = @gquery.question
+      search_results = agent.page.forms[0].submit
+
+      links = search_results.parser.xpath('//div[@id="search"]')
+
+      links.css('li h3 a').each_with_index do |link, i|
+         href = link["href"].split("&")
+         href = URI.extract(href[0])
+         result = Gresult.new(:title => link.text,
+                     :url => URI.decode(href[0]),
+                     :position => i+1,
+                     :gquery_id => @gquery.id)
+         result.save
+      end
+      render 'show', notice: 'Google query was successfully created.'
+    else
+      render action: "new"
+    end
+  end
+
+  def update
+    if @gquery.update_attributes(params[:gquery])
+      redirect_to @gquery, notice: 'Google query was successfully updated.'
+    else
+      render action: "edit"
+    end
+  end
+
+  def destroy
+    @gquery.destroy
+    redirect_to :action => 'index'
+  end
+
+  def show
+
+  end
+
+  def edit
+
+  end
+
+end

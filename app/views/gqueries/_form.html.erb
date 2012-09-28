@@ -1,0 +1,28 @@
+<%= form_for(@gquery) do |f| %>
+  <% if @gquery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gquery.errors.count, "error") %> prohibited this gquery from being saved:</h2>
+
+      <ul>
+      <% @gquery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :question %><br />
+    <%= f.text_field :question %>
+  </div>
+  <div class="field">
+    <%= f.label :interval %><br />
+    <%= f.number_field :interval %>
+  </div>
+
+    <%= f.hidden_field :user_id %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

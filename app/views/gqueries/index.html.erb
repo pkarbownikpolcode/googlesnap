@@ -1,0 +1,27 @@
+<h1>Listing gqueries</h1>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Interval</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gqueries.each do |gquery| %>
+  <tr>
+    <td><%= gquery.question %></td>
+    <td><%= gquery.interval %></td>
+    <td><%= gquery.user_id %></td>
+    <td><%= link_to 'Show', gquery %></td>
+    <td><%= link_to 'Edit', edit_gquery_path(gquery) %></td>
+    <td><%= link_to 'Destroy', gquery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gquery', new_gquery_path %>
