@@ -49,9 +49,11 @@ test:
   password: linux123
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: googlesnap_production
-  pool: 5
-  username: googlesnap
-  password:
+  adapter:	postgresql
+  encoding:	unicode
+  pool:	5
+  database:	da9otguoa4be6b
+  username:	wardetbpswygvn
+  password:	2xcix9kjZEKlBsmyDYzoYhxVue
+  host:	ec2-54-243-233-84.compute-1.amazonaws.com
+  port:	5432
