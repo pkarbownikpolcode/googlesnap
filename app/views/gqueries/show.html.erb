@@ -6,18 +6,24 @@
 
 <p>
   <b>Interval:</b>
-  <%= @gquery.interval %>
+  <%= @gquery.interval %>  minutes
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @gquery.user_id %>
-</p>
 
-<h3>Search results</h3>
+<h3>Search results:</h3>
+<table class="table table-hover">
+  <tr>
+    <th>Position</th>
+    <th>Page title</th>
+    <th>Last updated</th>
+  </tr>
 <%  @gquery.gresults.each do |r| %>
-    <p> <%= r.position %>.<a href="<%= URI.unescape(r.url) %>"><%=  r.title %></a> - <%= r.updated_at %></p>
+    <tr>
+      <td><%= r.position %>. </td>
+      <td><a href="<%= URI.unescape(r.url) %>"><%=  r.title %></a></td>
+      <td><%= r.updated_at %></td>
+    </tr>
 <% end %>
-
-<%= link_to 'Edit', edit_gquery_path(@gquery) %> |
-<%= link_to 'Back', gqueries_path %>
+</table>
+<%= link_to 'Edit', edit_gquery_path(@gquery), :class =>"btn" %>
+<%= link_to 'Back', gqueries_path, :class =>"btn" %>

@@ -1,7 +1,7 @@
-<%= form_for(@gquery) do |f| %>
+<%= form_for(@gquery,  :html => { :class => "form-horizontal"} ) do |f| %>
   <% if @gquery.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@gquery.errors.count, "error") %> prohibited this gquery from being saved:</h2>
+      <h2><%= pluralize(@gquery.errors.count, "error") %> prohibited this query from being saved:</h2>
 
       <ul>
       <% @gquery.errors.full_messages.each do |msg| %>
@@ -23,6 +23,6 @@
     <%= f.hidden_field :user_id %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class =>"btn btn-primary" %>
   </div>
 <% end %>

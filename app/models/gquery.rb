@@ -2,6 +2,11 @@ class Gquery < ActiveRecord::Base
   has_many :gresults, :dependent => :destroy
   belongs_to :user
   attr_accessible :interval, :question, :user_id
+  validates_length_of :question, :minimum => 4
+  validates_numericality_of :interval
+  validates_presence_of :question, :interval
+  validates_inclusion_of :interval, :in => 3..9999999999
+
 
 
   def perform

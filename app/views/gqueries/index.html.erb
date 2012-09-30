@@ -1,10 +1,9 @@
-<h1>Listing gqueries</h1>
+<h1>Listing google queries</h1>
 
-<table>
+<table class="table table-hover">
   <tr>
     <th>Question</th>
     <th>Interval</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,15 +12,14 @@
 <% @gqueries.each do |gquery| %>
   <tr>
     <td><%= gquery.question %></td>
-    <td><%= gquery.interval %></td>
-    <td><%= gquery.user_id %></td>
-    <td><%= link_to 'Show', gquery %></td>
-    <td><%= link_to 'Edit', edit_gquery_path(gquery) %></td>
-    <td><%= link_to 'Destroy', gquery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= gquery.interval %> min</td>
+    <td><%= link_to 'Show', gquery, :class =>"btn" %></td>
+    <td><%= link_to 'Edit', edit_gquery_path(gquery), :class =>"btn" %></td>
+    <td><%= link_to 'Destroy', gquery, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Gquery', new_gquery_path %>
+<%= link_to 'New google query', new_gquery_path, :class =>"btn" %>
