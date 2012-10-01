@@ -11,8 +11,4 @@
  *= require_self
  *= require_tree .
  */
-a:hover{
-    background: transparent !important;
-    color: #999 !important;
-    text-decoration: none;
-}
+
